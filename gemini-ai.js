@@ -100,6 +100,9 @@ class GeminiAIAssistant {
             content: msg.content
         }));
 
+        // Add system message to enforce English only
+        messages.unshift({ role: 'system', content: 'You are an AI study assistant for engineering students. You must ALWAYS respond in English only, regardless of the language the user uses. Never use Chinese or any other language in your responses. Always use proper English grammar and spelling.' });
+
         // Add current message
         messages.push({ role: 'user', content: message });
 
