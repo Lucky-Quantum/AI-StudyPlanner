@@ -1,14 +1,14 @@
-// Gemini AI Integration for Study Assistant
+// DeepSeek AI Integration for Study Assistant
 class GeminiAIAssistant {
     constructor() {
-        // Force set the API key (always override)
-        const newApiKey = 'AIzaSyAbl9SHPIQhXb37iioECkQ0uLSsSRlsQOk';
-        localStorage.setItem('gemini_api_key', newApiKey);
-        this.apiKey = newApiKey;
+        // DeepSeek API Key via OpenRouter
+        this.apiKey = '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';
+        this.apiUrl = 'https://openrouter.ai/api/v1/chat/completions';
+        this.model = 'deepseek/deepseek-r1-0528:free';
         this.chatHistory = [];
         this.isLoading = false;
         this.initializeEventListeners();
-        console.log('✅ Gemini API Key loaded:', this.apiKey);
+        console.log('✅ DeepSeek AI loaded:', this.model);
     }
 
     initializeEventListeners() {
@@ -69,20 +69,20 @@ class GeminiAIAssistant {
         this.showTypingIndicator();
         
         try {
-            const response = await this.callGeminiAPI(message);
+            const response = await this.callDeepSeekAPI(message);
             this.addMessage(response, 'bot');
         } catch (error) {
-            console.error('Gemini API Error:', error);
+            console.error('DeepSeek API Error:', error);
             let errorMessage = 'I encountered an error. ';
             
             if (error.message.includes('401') || error.message.includes('403')) {
-                errorMessage += 'Your API key may be invalid or expired. Please check your Gemini API key.';
+                errorMessage += 'Your API key may be invalid. Please check the API key.';
             } else if (error.message.includes('429')) {
                 errorMessage += 'Too many requests. Please wait a moment and try again.';
             } else if (error.message.includes('fetch') || error.message.includes('Network')) {
                 errorMessage += 'Network error. Please check your internet connection.';
             } else {
-                errorMessage += 'Please check your API key and try again.';
+                errorMessage += 'Please try again.';
             }
             
             this.addMessage(errorMessage, 'bot');
@@ -91,36 +91,45 @@ class GeminiAIAssistant {
         }
     }
 
-    async callGeminiAPI(message) {
+    async callDeepSeekAPI(message) {
         if (!this.apiKey) throw new Error('API key not configured');
 
-        const conversationHistory = this.chatHistory.slice(-5).map(msg => ({
-            role: msg.role === 'user' ? 'user' : 'model',
-            parts: [{ text: msg.content }]
+        // Build conversation messages (keep last 10 messages)
+        const messages = this.chatHistory.slice(-10).map(msg => ({
+            role: msg.role === 'user' ? 'user' : 'assistant',
+            content: msg.content
         }));
 
-        conversationHistory.push({ role: 'user', parts: [{ text: message }] });
+        // Add current message
+        messages.push({ role: 'user', content: message });
 
         try {
-            const response = await fetch(`https://generativelanguage.googleapis.com/v1/models/gemini-pro:generateContent?key=${this.apiKey}`, {
+            const response = await fetch(this.apiUrl, {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                headers: {
+                    'Authorization': `Bearer ${this.apiKey}`,
+                    'HTTP-Referer': window.location.href,
+                    'X-Title': 'AI Study Planner',
+                    'Content-Type': 'application/json'
+                },
                 body: JSON.stringify({
-                    contents: conversationHistory,
-                    generationConfig: { temperature: 0.7, topK: 1, topP: 0.95, maxOutputTokens: 1024 }
+                    model: this.model,
+                    messages: messages,
+                    temperature: 0.7,
+                    max_tokens: 1024
                 })
             });
 
             if (!response.ok) {
                 const errorData = await response.json();
-                console.error('Gemini API Error:', errorData);
+                console.error('DeepSeek API Error:', errorData);
                 throw new Error(`API request failed: ${response.status} - ${errorData.error?.message || 'Unknown error'}`);
             }
 
             const data = await response.json();
             
-            if (data.candidates && data.candidates[0] && data.candidates[0].content) {
-                let aiResponse = data.candidates[0].content.parts[0].text;
+            if (data.choices && data.choices[0] && data.choices[0].message) {
+                let aiResponse = data.choices[0].message.content;
                 aiResponse = this.formatResponse(aiResponse);
                 
                 this.chatHistory.push({ role: 'user', content: message });
@@ -133,10 +142,10 @@ class GeminiAIAssistant {
                 localStorage.setItem('ai_chat_history', JSON.stringify(this.chatHistory));
                 return aiResponse;
             } else {
-                throw new Error('Invalid response format from Gemini API');
+                throw new Error('Invalid response format from DeepSeek API');
             }
         } catch (error) {
-            console.error('Gemini API call failed:', error);
+            console.error('DeepSeek API call failed:', error);
             throw error;
         }
     }
@@ -196,8 +205,7 @@ class GeminiAIAssistant {
     }
 
     showApiKeyWarning() {
-        this.addMessage('Please configure your Gemini API key first. Click the link in the footer to set it up.', 'bot');
-        setTimeout(() => { if (typeof showApiConfig === 'function') showApiConfig(); }, 1000);
+        this.addMessage('Please configure your API key in the settings.', 'bot');
     }
 
     renderChatHistory() {
@@ -245,10 +253,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function showApiConfig() {
     document.getElementById('apiModal').classList.add('active');
-    const savedKey = localStorage.getItem('gemini_api_key');
-    if (savedKey && document.getElementById('geminiApiKey')) {
-        document.getElementById('geminiApiKey').value = savedKey;
-    }
 }
 
 function closeApiModal() {

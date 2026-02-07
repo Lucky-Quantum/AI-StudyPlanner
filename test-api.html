@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test Gemini API Key</title>
+    <title>Test DeepSeek API</title>
     <style>
         body { font-family: Arial, sans-serif; max-width: 600px; margin: 50px auto; padding: 20px; }
         .result { padding: 15px; margin: 10px 0; border-radius: 8px; }
@@ -14,8 +14,8 @@
     </style>
 </head>
 <body>
-    <h1>🔑 Test Gemini API Key</h1>
-    <p>Testing API key: <strong id="apiKeyDisplay"></strong></p>
+    <h1>🔑 Test DeepSeek API</h1>
+    <p>Testing API with model: <strong>deepseek/deepseek-r1-0528:free</strong></p>
     
     <button onclick="testApiKey()" style="padding: 10px 20px; font-size: 16px; cursor: pointer;">
         Test API Key
@@ -24,8 +24,9 @@
     <div id="result" class="result" style="display:none;"></div>
     
     <script>
-        const apiKey = 'AIzaSyAbl9SHPIQhXb37iioECkQ0uLSsSRlsQOk';
-        document.getElementById('apiKeyDisplay').textContent = apiKey.substring(0, 10) + '...';
+        const apiKey = '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';
+        const apiUrl = 'https://openrouter.ai/api/v1/chat/completions';
+        const model = 'deepseek/deepseek-r1-0528:free';
         
         async function testApiKey() {
             const resultDiv = document.getElementById('result');
@@ -34,12 +35,18 @@
             resultDiv.innerHTML = '⏳ Testing API key...';
             
             try {
-                const response = await fetch(`https://generativelanguage.googleapis.com/v1/models/gemini-pro:generateContent?key=${apiKey}`, {
+                const response = await fetch(apiUrl, {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
+                    headers: {
+                        'Authorization': `Bearer ${apiKey}`,
+                        'HTTP-Referer': window.location.href,
+                        'X-Title': 'AI Study Planner Test',
+                        'Content-Type': 'application/json'
+                    },
                     body: JSON.stringify({
-                        contents: [{ role: 'user', parts: [{ text: 'Say "Hello" if you can hear me.' }] }],
-                        generationConfig: { maxOutputTokens: 50 }
+                        model: model,
+                        messages: [{ role: 'user', content: 'Say "Hello" if you can hear me.' }],
+                        max_tokens: 50
                     })
                 });
                 
@@ -49,13 +56,13 @@
                     resultDiv.className = 'result success';
                     resultDiv.innerHTML = `
                         <h3>✅ API Key is VALID!</h3>
-                        <p>Response from Gemini:</p>
+                        <p>Response from DeepSeek:</p>
                         <pre>${JSON.stringify(data, null, 2)}</pre>
                     `;
                 } else {
                     resultDiv.className = 'result error';
                     resultDiv.innerHTML = `
-                        <h3>❌ API Key Error</h3>
+                        <h3>❌ API Error</h3>
                         <p>Status: ${response.status} ${response.statusText}</p>
                         <p>Error: ${data.error?.message || 'Unknown error'}</p>
                         <pre>${JSON.stringify(data, null, 2)}</pre>
