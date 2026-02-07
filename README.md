@@ -9,7 +9,7 @@ RECORDING LINK =(<video controls src="Recording 2026-02-07 171146.mp4" title="re
 
 *A personalized AI-powered study planner that helps engineering students study smarter, not harder.*
 
-[Features](#-features) • [How It Works](#-how-it-works) • [Installation](#-installation) • [Demo](#-demo-video)
+[Features](#-features) • [How It Works](#-how-it-works) • [Installation](#-installation) • [Demo](#Recording 2026-02-07 171146.mp4)
 
 </div>
 
@@ -120,9 +120,7 @@ AI-StudyPlanner/
 
 <div align="center">
 
-[![Demo Video Placeholder](https://img.shields.io/badge/📹-Watch%20Demo%20Video-ff6b6b?style=for-the-badge)](ADD_YOUR_VIDEO_LINK_HERE)
-
-*Click above to watch the 5-minute demo* ⬆️ **REPLACE THIS WITH YOUR VIDEO LINK** ⬆️
+[![Watch Demo Video](https://img.shields.io/badge/📹-Watch%20Demo%20Video-ff6b6b?style=for-the-badge)](https://youtu.be/6UX3jrhz068)
 
 </div>
 
