@@ -1,25 +1,15 @@
 // Gemini AI Integration for Study Assistant
 class GeminiAIAssistant {
     constructor() {
-        this.apiKey = localStorage.getItem('gemini_api_key') || '';
+        // Set default API key synchronously if not already set
+        if (!localStorage.getItem('gemini_api_key')) {
+            localStorage.setItem('gemini_api_key', 'AIzaSyAyLTmDS200Lv7hWzbdabeNmEhpZ4ESMXE');
+        }
+        this.apiKey = localStorage.getItem('gemini_api_key');
         this.chatHistory = [];
         this.isLoading = false;
         this.initializeEventListeners();
-        this.loadApiKey();
-    }
-
-    async loadApiKey() {
-        // Check if API key exists in localStorage, if not, set the default key
-        const storedKey = localStorage.getItem('gemini_api_key');
-        if (!storedKey) {
-            // Set default Gemini API key
-            localStorage.setItem('gemini_api_key', 'AIzaSyAyLTmDS200Lv7hWzbdabeNmEhpZ4ESMXE');
-            this.apiKey = 'AIzaSyAyLTmDS200Lv7hWzbdabeNmEhpZ4ESMXE';
-            console.log('Default Gemini API key configured');
-        } else {
-            this.apiKey = storedKey;
-        }
-        return true;
+        console.log('Gemini API Key loaded:', this.apiKey ? '✓' : '✗');
     }
 
     initializeEventListeners() {
@@ -84,7 +74,19 @@ class GeminiAIAssistant {
             this.addMessage(response, 'bot');
         } catch (error) {
             console.error('Gemini API Error:', error);
-            this.addMessage('I apologize, but I encountered an error. Please check your API key and try again.', 'bot');
+            let errorMessage = 'I encountered an error. ';
+            
+            if (error.message.includes('401') || error.message.includes('403')) {
+                errorMessage += 'Your API key may be invalid or expired. Please check your Gemini API key.';
+            } else if (error.message.includes('429')) {
+                errorMessage += 'Too many requests. Please wait a moment and try again.';
+            } else if (error.message.includes('fetch') || error.message.includes('Network')) {
+                errorMessage += 'Network error. Please check your internet connection.';
+            } else {
+                errorMessage += 'Please check your API key and try again.';
+            }
+            
+            this.addMessage(errorMessage, 'bot');
         } finally {
             this.hideTypingIndicator();
         }
@@ -101,7 +103,7 @@ class GeminiAIAssistant {
         conversationHistory.push({ role: 'user', parts: [{ text: message }] });
 
         try {
-            const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${this.apiKey}`, {
+            const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro:generateContent?key=${this.apiKey}`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -110,7 +112,11 @@ class GeminiAIAssistant {
                 })
             });
 
-            if (!response.ok) throw new Error(`API request failed: ${response.status}`);
+            if (!response.ok) {
+                const errorData = await response.json();
+                console.error('Gemini API Error:', errorData);
+                throw new Error(`API request failed: ${response.status} - ${errorData.error?.message || 'Unknown error'}`);
+            }
 
             const data = await response.json();
             
