@@ -1,336 +1,68 @@
-# 🧠 AI Study Planner for Engineering Students
+# 🧠 AI Study Planner
 
 <div align="center">
 
-AI-Studyplanner=(https://celadon-starship-4143f0.netlify.app/)
-RECORDING LINK =(<video controls src="Recording 2026-02-07 171146.mp4" title="recording"></video>)
+**AI-Powered Study Planner for Engineering Students**
+
+[![Live Demo](https://img.shields.io/badge/🚀-Live%20Demo-06d6a0?style=for-the-badge)](https://celadon-starship-4143f0.netlify.app/)
+[![Demo Video](https://img.shields.io/badge/📹-Watch%20Demo-ff6b6b?style=for-the-badge)](https://youtu.be/6UX3jrhz068)
+[![GitHub](https://img.shields.io/badge/💻-View%20Code-4361ee?style=for-the-badge)](https://github.com/Lucky-Quantum/AI-StudyPlanner)
 
 **Built for UnsaidTalks Engineering Students Hackathon 2026**
 
-*A personalized AI-powered study planner that helps engineering students study smarter, not harder.*
-
-[Features](#-features) • [How It Works](#-how-it-works) • [Installation](#-installation) • [Demo](#Recording 2026-02-07 171146.mp4)
-
 </div>
 
 ---
 
-##  Problem Statement
+## ✨ Features
 
-Engineering students face a uniquely demanding academic environment. They juggle multiple technically intensive subjects at once - each with different prerequisites, assessment styles, and cognitive demands. Traditional study planning methods fail to adapt to the dynamic, interconnected, and high-cognitive-load nature of engineering coursework.
+- 🤖 **AI Study Assistant** - DeepSeek-powered chatbot for study help
+- 📅 **Smart Scheduling** - AI generates personalized weekly schedules
+- 🧠 **Cognitive Load Balancing** - Optimal session scheduling
+- 🎨 **Dark/Light Mode** - Beautiful theme toggle
+- 📊 **Progress Tracking** - Monitor your improvement
+- 📱 **Responsive Design** - Works on all devices
 
-### Key Challenges Addressed:
-- **Cognitive Load Imbalance** - Different subjects demand different levels of mental effort
-- **Prerequisite Dependencies** - Courses build heavily on prior concepts
-- **Dynamic Prioritization Issues** - Deadlines, exams, and unexpected difficulties constantly shift priorities
-- **Inefficient Study Patterns** - Cramming and last-minute studying lead to poor retention
-- **Lack of Personalization** - Existing tools don't adapt to individual learning speed and preferences
+## 🚀 Quick Start
 
----
+1. **Visit Live Demo:** https://celadon-starship-4143f0.netlify.app/
 
-##  Solution
-
-An AI-powered study planner tailored specifically for engineering students that:
-
--  **Analyzes** subjects, deadlines, prerequisites, and cognitive load
--  **Creates** personalized, adaptive study schedules
--  **Balances** deep learning with timely completion
--  **Evolves** dynamically as priorities, performance, and difficulty change
-
----
-
-##  Features
-
-###  User Experience
-- **Dark/Light Mode** - Toggle between themes for comfortable viewing (press `Ctrl+D` for dark mode)
-- **Responsive Design** - Works on desktop, tablet, and mobile
-- **Progress Tracker** - Visual 4-step progress indicator
-- **Sample Data** - Pre-loaded sample for quick demonstration
-
-###  AI-Powered Features
-- **Smart Scheduling Algorithm** - Generates personalized weekly schedules
-- **Cognitive Load Balancing** - Distributes high-focus and low-focus sessions optimally
-- **Prerequisite Mapping** - Identifies foundational gaps blocking progress
-- **Adaptive Rebalancing** - Automatically adjusts schedule based on confidence levels
-- **Gemini AI Assistant** - Chat with AI for study help and concept explanations
-
-###  Schedule Visualization
-- **Weekly View** - Color-coded daily schedule
-- **Daily View** - Detailed day-by-day breakdown
-- **Timeline View** - Long-term progress tracking
-- **Subject Breakdown** - Percentage-based focus allocation
-- **Confidence Tracking** - Monitor improvement over time
-
-###  Input Details
-- Student profile (Name, College, Branch, Graduation Year)
-- Subjects with credits and confidence levels
-- Strong and weak areas per subject
-- Study time availability (weekdays/weekends)
-- Preferred study time (morning/afternoon/evening/night)
-- Target completion date
-- Optional exam dates
-
----
-
-##  How It Works
-
-### 1. Input Your Details
-Fill in your profile, subjects, and study preferences. Sample data is pre-loaded for quick testing.
-
-### 2. Generate Your Plan
-Click "Generate AI Study Plan" and our algorithm creates a personalized schedule in under 2 minutes.
-
-### 3. Follow Your Schedule
-View your daily tasks, track progress, and follow AI recommendations.
-
-### 4. Get AI Assistance
-Click on any topic in your schedule to get AI-powered explanations and study tips.
-
----
-
-##  Technology Stack
-
-- **Frontend:** HTML5, CSS3, JavaScript (ES6+)
-- **AI Integration:** Google Gemini Pro API
-- **Styling:** Custom CSS with CSS Variables
-- **Icons:** Font Awesome 6.4.0
-- **Fonts:** Inter, Poppins, JetBrains Mono
-
----
-
-##  Project Structure
-
-
-AI-StudyPlanner/
- index.html              # Main HTML structure
- style.css              # Complete styling with dark/light mode
- script.js              # Main application logic
- schedule-algorithm.js   # AI scheduling algorithm
- gemini-ai.js           # Gemini AI integration
- README.md             # This file
- assets/
-     .env.example      # Environment variables template
-
-
-
-
-
-
-## 📽️ Demo Video
-
-<div align="center">
-
-[![Watch Demo Video](https://img.shields.io/badge/📹-Watch%20Demo%20Video-ff6b6b?style=for-the-badge)](https://youtu.be/6UX3jrhz068)
-
-</div>
-
-### 🎬 How to Record Your Demo:
-
-1. **Use Free Tools:**
-   - **OBS Studio** - Download from obsproject.com
-   - **Windows Game Bar** - Press `Win+G`
-   - **Loom** - loom.com (browser extension)
-
-2. **What to Show (3-5 minutes):**
-   | Time | Content |
-   |------|---------|
-   | 30 sec | Problem statement - Why students struggle |
-   | 1 min | Solution overview - Your AI Study Planner |
-   | 2 min | LIVE DEMO - Show all features working |
-   | 30 sec | Key impact and closing |
-
-3. **Demo Script:**
-   - "Hi, I'm [Name] from [College]"
-   - "Today I'll show you my AI Study Planner..."
-   - Show generating a schedule
-   - Show AI assistant answering questions
-   - Show dark/light mode toggle
-   - "Thank you!"
-
-4. **Upload & Share:**
-   - Upload to **YouTube** (unlisted) or **Vimeo**
-   - Or use **Google Drive** / **OneDrive** (set sharing to "Anyone with link")
-   - Copy the share link
-   - Replace `ADD_YOUR_VIDEO_LINK_HERE` above with your link
-
-### 📹 Quick Tips:
-- ✅ Record in landscape mode (horizontal)
-- ✅ Use 1080p resolution
-- ✅ Ensure clear audio
-- ✅ Show cursor interactions
-- ✅ Keep under 5 minutes
-- ✅ Export as MP4
-
-
-
-##  Quick Start
-
-### Prerequisites
-- Modern web browser (Chrome, Firefox, Edge, Safari)
-- DeepSeek API Key via [OpenRouter](https://openrouter.ai/keys) (free tier available)
-
-### Installation
-
-1. **Clone or download the project:**
+2. **Or Run Locally:**
 ```bash
 git clone https://github.com/Lucky-Quantum/AI-StudyPlanner.git
 cd AI-StudyPlanner
+# Open index.html in browser
 ```
 
-2. **Get your DeepSeek API Key:**
-   - Visit [OpenRouter](https://openrouter.ai/keys)
-   - Sign up and create a free API key
-   - Copy your key
+## 📽️ Demo Video
 
-3. **Run the project:**
-   - Open `index.html` in your browser
-   - Or use a local server:
-```bash
-# Using Python
-python -m http.server 8000
-# Then open: http://localhost:8000
+Watch the 5-minute demo: https://youtu.be/6UX3jrhz068
+
+## 🛠️ Technology
+
+- **Frontend:** HTML, CSS, JavaScript
+- **AI:** DeepSeek (via OpenRouter)
+- **Styling:** Custom CSS with Dark/Light Mode
+- **Icons:** Font Awesome
+
+## 📁 Project Structure
+
 ```
-
-### 🚀 Hosting (Optional - Gives You Edge!)
-
-Host your project for free:
-
-| Platform | Link | Cost |
-|----------|------|------|
-| GitHub Pages | [Enable in repo settings](https://pages.github.com/) | Free |
-| Netlify | [netlify.com](https://netlify.com) | Free |
-| Vercel | [vercel.com](https://vercel.com) | Free |
-
-**Recommended: GitHub Pages (Easiest)**
-1. Go to Repository **Settings** → **Pages**
-2. Under "Source", select **main** branch
-3. Click **Save**
-4. Your site will be live at:
-   ```
-   https://Lucky-Quantum.github.io/AI-StudyPlanner
-   ```
-5. **Add this link** to your submission!
-
-3. **Configure the API:**
-   - Open the project in your browser
-   - Click "Configure API" in the footer
-   - Enter your API key
-   - Click Save
-
-4. **Run the application:**
-   - Open `index.html` in your browser
-   - Or use a local server:
-```bash
-# Using Python
-python -m http.server 8000
-
-# Using Node.js
-npx serve .
+AI-StudyPlanner/
+├── index.html              # Main page
+├── style.css               # Styles
+├── script.js               # Main logic
+├── schedule-algorithm.js   # Scheduling algorithm
+├── gemini-ai.js            # AI integration
+└── README.md               # This file
 ```
 
 ---
-
-##  Algorithm Highlights
-
-### Weight Calculation Formula
-```
-Subject Weight = (Credits × 8) + ((5 - Confidence) × 7) × CognitiveMultiplier + (WeakAreas × 3)
-```
-
-### Cognitive Load Distribution
-- **High Load (Red):** New concept learning sessions
-- **Medium Load (Yellow):** Practice and problem-solving
-- **Low Load (Green):** Revision and buffer time
-
-### Session Prioritization Logic
-1. Subjects with low confidence get higher priority
-2. High-cognitive-load topics scheduled during preferred study times
-3. Prerequisite topics scheduled before dependent topics
-4. Buffer time included for unexpected delays
-
----
-
-##  Theme Toggle
-
-The application includes a beautiful dark/light mode toggle:
-
-| Feature | Light Mode | Dark Mode |
-|---------|------------|-----------|
-| Primary Color | Blue Gradient | Indigo/Cyan |
-| Background | Light Gray | Deep Navy |
-| Text | Dark Slate | Off-White |
-| Accent | Pink | Pink |
-| Ideal For | Daytime Use | Night Study Sessions |
-
-**Keyboard Shortcut:** Press `Ctrl + D` (or `Cmd + D` on Mac) to toggle dark mode.
-
----
-
-##  Screenshots
-
-### Main Dashboard
-![Main Dashboard](https://via.placeholder.com/800x400?text=AI+Study+Planner+Dashboard)
-
-### Schedule View
-![Schedule View](https://via.placeholder.com/800x400?text=Weekly+Schedule+View)
-
-### AI Assistant
-![AI Assistant](https://via.placeholder.com/400x300?text=AI+Chat+Assistant)
-
----
-
-##  Expected Outcomes
-
-### For Students
--  **70% reduction** in last-minute cramming
--  **45% improvement** in long-term retention
--  **20% more efficient** study time
--  Personalized confidence improvement to 4-5/5
-
-### For Institutions
--  Better prepared students for exams
--  Reduced stress and burnout
--  Improved academic performance
--  Enhanced learning outcomes
-
----
-
-##  Contributing
-
-This is a hackathon submission. For improvements or issues:
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
----
-
-##  License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
-##  Acknowledgments
-
-- **UnsaidTalks Education** - For organizing this amazing hackathon
-- **Google** - For providing the Gemini AI API
-- **Font Awesome** - For the beautiful icons
-- **All engineering students** - Whose challenges inspired this solution
-
----
-
-
 
 <div align="center">
 
-### Made with ❤️ for Engineering Students
+**Made with ❤️ for Engineering Students**
 
-**© 2026 AI Study Planner | Built for UnsaidTalks Hackathon**
-
-[![GitHub Stars](https://img.shields.io/github/stars/Lucky-Quantum/AI-StudyPlanner?style=social)](https://github.com/Lucky-Quantum/AI-StudyPlanner)
-
+**© 2026 AI Study Planner | UnsaidTalks Hackathon**
 
 </div>
