@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🧠 AI Study Planner | Engineering Students Hackathon</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+</head>
+<body>
+    <!-- Theme Toggle Button -->
+    <button class="theme-toggle" id="themeToggle" title="Toggle Dark/Light Mode">
+        <i class="fas fa-moon" id="themeIcon"></i>
+    </button>
+
+    <!-- Floating AI Assistant -->
+    <div class="ai-assistant">
+        <button class="ai-toggle" id="aiToggle">
+            <i class="fas fa-robot"></i>
+            <span class="ai-pulse"></span>
+        </button>
+        <div class="ai-chatbox" id="aiChatbox">
+            <div class="ai-header">
+                <div class="ai-title">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h3>Study Assistant</h3>
+                </div>
+                <button class="ai-close" id="aiClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="ai-messages" id="aiMessages">
+                <div class="ai-message ai-bot">
+                    <div class="avatar">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="message-content">
+                        <p>Hello! 👋 I'm your AI Study Assistant</p>
+                        <p>I can help you with:</p>
+                        <ul>
+                            <li>📚 Study doubts and concepts</li>
+                            <li>⏰ Time management tips</li>
+                            <li>🎯 Exam preparation strategies</li>
+                            <li>💡 Engineering problem solving</li>
+                        </ul>
+                        <p>What would you like to ask?</p>
+                    </div>
+                </div>
+            </div>
+            <div class="ai-input">
+                <input type="text" id="aiInput" placeholder="Ask your study question...">
+                <button id="aiSend">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+            <div class="ai-footer">
+                <small>Powered by Gemini AI</small>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <i class="fas fa-brain-circuit"></i>
+                <div>
+                    <h1>AI Study Planner</h1>
+                    <p>Engineering Students | UnsaidTalks Hackathon</p>
+                </div>
+            </div>
+            <div class="hackathon-badge">
+                <span class="badge"><i class="fas fa-trophy"></i> Hackathon 2026</span>
+                <span class="timer" id="hackathonTimer"><i class="fas fa-clock"></i> Submission Open</span>
+            </div>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h2>Build the Future of <span class="highlight">Smart Study Planning</span></h2>
+                <p>AI-powered personalized study schedules for engineering students. Analyzes cognitive load, prerequisites, and deadlines to help you study smarter, not harder.</p>
+                <div class="stats">
+                    <div class="stat">
+                        <i class="fas fa-bolt"></i>
+                        <span>Generates in 2 minutes</span>
+                    </div>
+                    <div class="stat">
+                        <i class="fas fa-robot"></i>
+                        <span>Gemini AI Powered</span>
+                    </div>
+                    <div class="stat">
+                        <i class="fas fa-chart-line"></i>
+                        <span>30% More Efficient</span>
+                    </div>
+                    <div class="stat">
+                        <i class="fas fa-ad"></i>
+                        <span>Smart Adaptation</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="schedule-preview">
+                    <div class="preview-header"><i class="fas fa-calendar-alt"></i> Your Week</div>
+                    <div class="preview-day">
+                        <span>Mon</span>
+                        <span class="slot-high">Trees</span>
+                        <span class="slot-med">OS</span>
+                    </div>
+                    <div class="preview-day">
+                        <span>Tue</span>
+                        <span class="slot-high">Graphs</span>
+                        <span class="slot-low">Math</span>
+                    </div>
+                    <div class="preview-day">
+                        <span>Wed</span>
+                        <span class="slot-med">OS</span>
+                        <span class="slot-high">Trees</span>
+                    </div>
+                    <div class="preview-day">
+                        <span>Thu</span>
+                        <span class="slot-low">Math</span>
+                        <span class="slot-med">Buffer</span>
+                    </div>
+                    <div class="preview-day">
+                        <span>Fri</span>
+                        <span class="slot-high">Practice</span>
+                        <span class="slot-med">Revision</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Progress Indicator -->
+        <div class="progress-tracker" id="progressTracker">
+            <div class="progress-step active" data-step="1">
+                <div class="step-number">1</div>
+                <span>Profile</span>
+            </div>
+            <div class="progress-line"></div>
+            <div class="progress-step" data-step="2">
+                <div class="step-number">2</div>
+                <span>Subjects</span>
+            </div>
+            <div class="progress-line"></div>
+            <div class="progress-step" data-step="3">
+                <div class="step-number">3</div>
+                <span>Schedule</span>
+            </div>
+            <div class="progress-line"></div>
+            <div class="progress-step" data-step="4">
+                <div class="step-number">4</div>
+                <span>Insights</span>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-grid">
+            <!-- Input Panel -->
+            <div class="panel input-panel">
+                <div class="panel-header">
+                    <i class="fas fa-user-graduate"></i>
+                    <h2>Student Profile</h2>
+                    <span class="panel-badge">Step 1 of 4</span>
+                </div>
+                <div class="form-section">
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label for="studentName"><i class="fas fa-user"></i> Full Name</label>
+                            <input type="text" id="studentName" placeholder="Enter your name" value="Aman">
+                        </div>
+                        <div class="input-group">
+                            <label for="email"><i class="fas fa-envelope"></i> Email ID</label>
+                            <input type="email" id="email" placeholder="your.email@example.com" value="aman@example.com">
+                        </div>
+                    </div>
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label for="college"><i class="fas fa-university"></i> College</label>
+                            <input type="text" id="college" placeholder="Your college" value="XYZ Institute of Technology">
+                        </div>
+                    </div>
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label for="branch"><i class="fas fa-code-branch"></i> Branch</label>
+                            <select id="branch">
+                                <option>CSE</option>
+                                <option selected>Computer Science Engineering</option>
+                                <option>Electrical Engineering</option>
+                                <option>Mechanical Engineering</option>
+                                <option>Civil Engineering</option>
+                                <option>Electronics Engineering</option>
+                                <option>Data Science</option>
+                                <option>AI & ML</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label for="graduationYear"><i class="fas fa-calendar"></i> Graduation Year</label>
+                            <input type="number" id="graduationYear" min="2024" max="2030" value="2026">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel-header">
+                    <i class="fas fa-clock"></i>
+                    <h2>Study Time & Preferences</h2>
+                </div>
+                <div class="form-section">
+                    <div class="time-inputs">
+                        <div class="time-input">
+                            <label><i class="fas fa-sun"></i> Weekday Hours</label>
+                            <div class="time-slider">
+                                <input type="range" min="1" max="10" value="3" class="slider" id="weekdaySlider">
+                                <span id="weekdayValue">3 hours/day</span>
+                            </div>
+                        </div>
+                        <div class="time-input">
+                            <label><i class="fas fa-moon"></i> Weekend Hours</label>
+                            <div class="time-slider">
+                                <input type="range" min="1" max="12" value="6" class="slider" id="weekendSlider">
+                                <span id="weekendValue">6 hours/day</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label><i class="fas fa-star"></i> Preferred Study Time</label>
+                        <div class="time-preferences">
+                            <button class="time-btn" data-time="morning"><i class="fas fa-sun"></i> Morning</button>
+                            <button class="time-btn" data-time="afternoon"><i class="fas fa-cloud-sun"></i> Afternoon</button>
+                            <button class="time-btn" data-time="evening"><i class="fas fa-sunset"></i> Evening</button>
+                            <button class="time-btn active" data-time="night"><i class="fas fa-moon"></i> Night</button>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label for="targetDate"><i class="fas fa-bullseye"></i> Target Completion Date</label>
+                        <input type="date" id="targetDate" value="2026-03-15">
+                        <small class="input-hint"><i class="fas fa-info-circle"></i> Plan your study schedule until this date</small>
+                    </div>
+                    <div class="input-group">
+                        <label for="examDate"><i class="fas fa-clipboard-check"></i> Upcoming Exam Date (Optional)</label>
+                        <input type="date" id="examDate" placeholder="Select if you have exams">
+                        <small class="input-hint"><i class="fas fa-info-circle"></i> Helps prioritize high-stakes subjects</small>
+                    </div>
+                </div>
+
+                <div class="panel-header">
+                    <i class="fas fa-book"></i>
+                    <h2>Subjects & Confidence</h2>
+                    <button class="btn-icon" onclick="addSubject()" title="Add Subject">
+                        <i class="fas fa-plus"></i>
+                    </button>
+                </div>
+                <div class="subjects-container" id="subjectsContainer">
+                    <!-- Subjects will be loaded here -->
+                </div>
+
+                <div class="generate-section">
+                    <button class="btn-generate" onclick="generateSchedule()" id="generateBtn">
+                        <i class="fas fa-magic"></i>
+                        <span>Generate AI Study Plan</span>
+                        <div class="loading-dots" id="loadingDots">
+                            <span></span><span></span><span></span>
+                        </div>
+                    </button>
+                    <p class="tip"><i class="fas fa-lightbulb"></i> Our AI analyzes cognitive load, prerequisites, deadlines & confidence levels</p>
+                </div>
+            </div>
+
+            <!-- Output Panel -->
+            <div class="panel output-panel">
+                <div class="panel-header">
+                    <i class="fas fa-calendar-alt"></i>
+                    <h2>AI-Generated Study Plan</h2>
+                    <div class="week-nav">
+                        <button class="btn-icon" onclick="changeWeek(-1)" title="Previous Week">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <span id="weekTitle">Week 1</span>
+                        <button class="btn-icon" onclick="changeWeek(1)" title="Next Week">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div id="outputPlaceholder" class="output-placeholder">
+                    <div class="placeholder-content">
+                        <div class="placeholder-icon">
+                            <i class="fas fa-calendar-plus"></i>
+                        </div>
+                        <h3>Your Personalized Schedule Awaits</h3>
+                        <p>Fill in your details and click "Generate AI Study Plan" to get:</p>
+                        <div class="features-list">
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Smart weekly schedule with color-coded sessions</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Cognitive load balancing for optimal focus</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Prerequisite dependency mapping</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Actionable daily insights & recommendations</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Adaptive rebalancing suggestions</span>
+                            </div>
+                        </div>
+                        <div class="sample-badge">
+                            <i class="fas fa-eye"></i> Sample data pre-loaded - just click Generate!
+                        </div>
+                    </div>
+                </div>
+
+                <div id="outputContent" class="hidden">
+                    <!-- Weekly Navigation -->
+                    <div class="schedule-tabs">
+                        <button class="tab-btn active" onclick="showScheduleView('weekly')">
+                            <i class="fas fa-calendar-week"></i> Weekly View
+                        </button>
+                        <button class="tab-btn" onclick="showScheduleView('daily')">
+                            <i class="fas fa-calendar-day"></i> Daily View
+                        </button>
+                        <button class="tab-btn" onclick="showScheduleView('timeline')">
+                            <i class="fas fa-stream"></i> Timeline
+                        </button>
+                    </div>
+
+                    <!-- Weekly Schedule -->
+                    <div id="weeklyView" class="schedule-view active">
+                        <div class="schedule-grid" id="weeklySchedule">
+                            <!-- Generated schedule will appear here -->
+                        </div>
+                    </div>
+
+                    <!-- Daily View -->
+                    <div id="dailyView" class="schedule-view">
+                        <div class="daily-schedule" id="dailySchedule">
+                            <!-- Daily schedule will appear here -->
+                        </div>
+                    </div>
+
+                    <!-- Timeline View -->
+                    <div id="timelineView" class="schedule-view">
+                        <div class="timeline-container" id="timelineContainer">
+                            <!-- Timeline will appear here -->
+                        </div>
+                    </div>
+
+                    <!-- Week Progress -->
+                    <div class="week-progress">
+                        <div class="progress-info">
+                            <span id="currentWeekProgress">Week 1 of <span id="totalWeeks">12</span></span>
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="weekProgressFill" style="width: 8%"></div>
+                            </div>
+                        </div>
+                        <div class="week-navigation">
+                            <button class="btn-nav" onclick="navigateWeek('prev')"><i class="fas fa-chevron-left"></i> Previous</button>
+                            <button class="btn-nav" onclick="navigateWeek('next')">Next <i class="fas fa-chevron-right"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- Subject Breakdown -->
+                    <div class="breakdown-section">
+                        <h3><i class="fas fa-chart-pie"></i> Subject Focus Breakdown</h3>
+                        <div id="subjectBreakdown"></div>
+                    </div>
+
+                    <!-- Cognitive Load Chart -->
+                    <div class="chart-section">
+                        <h3><i class="fas fa-brain"></i> Cognitive Load Distribution</h3>
+                        <div class="cognitive-chart" id="cognitiveChart"></div>
+                    </div>
+
+                    <!-- Insights Grid -->
+                    <div class="insights-section">
+                        <h3><i class="fas fa-lightbulb"></i> AI Insights & Actions</h3>
+                        <div class="insights-grid">
+                            <div class="insight-card priority">
+                                <div class="insight-header">
+                                    <i class="fas fa-exclamation-circle"></i>
+                                    <h4>🎯 Priority Focus</h4>
+                                </div>
+                                <div id="priorityFocus"></div>
+                            </div>
+                            <div class="insight-card prerequisites">
+                                <div class="insight-header">
+                                    <i class="fas fa-link"></i>
+                                    <h4>🔗 Prerequisite Checks</h4>
+                                </div>
+                                <div id="prerequisiteChecks"></div>
+                            </div>
+                            <div class="insight-card adaptation">
+                                <div class="insight-header">
+                                    <i class="fas fa-sync-alt"></i>
+                                    <h4>⚡ Adaptation Suggestions</h4>
+                                </div>
+                                <div id="adaptationSuggestions"></div>
+                            </div>
+                            <div class="insight-card todolist">
+                                <div class="insight-header">
+                                    <i class="fas fa-tasks"></i>
+                                    <h4>📋 Today's To-Do</h4>
+                                </div>
+                                <div id="todaysTodo"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Next Steps -->
+                    <div class="nextsteps-section">
+                        <h3><i class="fas fa-shoe-prints"></i> Next 7 Days Focus</h3>
+                        <div id="next7DaysFocus"></div>
+                    </div>
+
+                    <!-- Weekly Confidence Check -->
+                    <div class="confidence-check-section">
+                        <h3><i class="fas fa-check-circle"></i> Weekly Confidence Check</h3>
+                        <div id="confidenceCheck"></div>
+                    </div>
+
+                    <!-- Expected Outcomes -->
+                    <div class="outcomes-section">
+                        <h3><i class="fas fa-trophy"></i> Expected Outcomes</h3>
+                        <div id="expectedOutcomes"></div>
+                    </div>
+
+                    <!-- Export Options -->
+                    <div class="export-section">
+                        <button class="btn-export" onclick="exportToPDF()">
+                            <i class="fas fa-file-pdf"></i> Export PDF
+                        </button>
+                        <button class="btn-export" onclick="exportToCalendar()">
+                            <i class="fas fa-calendar-plus"></i> Add to Calendar
+                        </button>
+                        <button class="btn-export" onclick="shareSchedule()">
+                            <i class="fas fa-share-alt"></i> Share
+                        </button>
+                        <button class="btn-export" onclick="downloadSchedule()">
+                            <i class="fas fa-download"></i> Download
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4><i class="fas fa-code"></i> Hackathon Submission</h4>
+                    <p>Built for Engineering Students Hackathon by UnsaidTalks</p>
+                    <p class="timestamp">Generated: <span id="currentTimestamp"></span></p>
+                </div>
+                <div class="footer-section">
+                    <h4><i class="fas fa-bolt"></i> Key Features</h4>
+                    <ul>
+                        <li><i class="fas fa-robot"></i> Gemini AI Integration</li>
+                        <li><i class="fas fa-algorithm"></i> Smart Scheduling Algorithm</li>
+                        <li><i class="fas fa-sync"></i> Real-time Adaptation</li>
+                        <li><i class="fas fa-chart-line"></i> Progress Tracking</li>
+                        <li><i class="fas fa-brain"></i> Cognitive Load Analysis</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4><i class="fas fa-star"></i> Evaluation Criteria</h4>
+                    <div class="criteria">
+                        <span class="criteria-badge impact">Impact 20%</span>
+                        <span class="criteria-badge innovation">Innovation 20%</span>
+                        <span class="criteria-badge technical">Technical 20%</span>
+                        <span class="criteria-badge ux">UX 25%</span>
+                        <span class="criteria-badge presentation">Presentation 15%</span>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4><i class="fas fa-link"></i> Quick Links</h4>
+                    <ul>
+                        <li><a href="#" onclick="showApiConfig()"><i class="fas fa-key"></i> Configure API</a></li>
+                        <li><a href="#" onclick="resetData()"><i class="fas fa-redo"></i> Reset Data</a></li>
+                        <li><a href="#" onclick="loadSampleData()"><i class="fas fa-download"></i> Load Sample</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>©  Planner | Made with2026 AI Study ❤️ for engineering students | <a href="#" onclick="showApiConfig()">Configure Gemini API</a></p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- API Configuration Modal -->
+    <div id="apiModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-key"></i> Configure Gemini API</h3>
+                <button class="modal-close" onclick="closeApiModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Get your FREE Gemini API key from <a href="https://makersuite.google.com/app/apikey" target="_blank">Google AI Studio</a></p>
+                <div class="api-input">
+                    <input type="password" id="geminiApiKey" placeholder="Enter your Gemini API key">
+                    <button onclick="saveApiKey()">Save</button>
+                </div>
+                <div class="api-info">
+                    <p><i class="fas fa-info-circle"></i> Your API key is stored locally and never sent to our servers</p>
+                    <p><i class="fas fa-shield-alt"></i> Required for AI chat assistant functionality</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="gemini-ai.js"></script>
+    <script src="schedule-algorithm.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
