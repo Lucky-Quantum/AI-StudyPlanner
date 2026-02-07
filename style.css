@@ -146,6 +146,44 @@ body {
     transition: var(--transition-normal);
 }
 
+/* Modern Heading Styles */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Outfit', 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.3;
+}
+
+h1 {
+    font-weight: 800;
+    font-size: 2.5rem;
+}
+
+h2 {
+    font-weight: 700;
+    font-size: 2rem;
+}
+
+h3 {
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+h4 {
+    font-weight: 600;
+    font-size: 1.25rem;
+}
+
+h5 {
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+h6 {
+    font-weight: 600;
+    font-size: 1rem;
+}
+
 /* Animated Background Particles */
 body::before {
     content: '';
@@ -258,13 +296,16 @@ body::before {
 }
 
 .logo h1 {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 700;
-    font-size: 1.8rem;
+    font-family: 'Outfit', 'Space Grotesk', sans-serif;
+    font-weight: 800;
+    font-size: 2rem;
+    letter-spacing: -0.02em;
     background: var(--gradient-primary);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    text-transform: uppercase;
+    font-display: swap;
 }
 
 .logo p {
@@ -335,9 +376,13 @@ body::before {
 }
 
 .hero h2 {
-    font-size: 2rem;
+    font-family: 'Outfit', 'Space Grotesk', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
     margin-bottom: 1rem;
-    line-height: 1.3;
+    line-height: 1.2;
+    letter-spacing: -0.03em;
+    color: var(--text-primary);
 }
 
 .highlight {
@@ -555,9 +600,11 @@ body::before {
 }
 
 .panel-header h2 {
-    font-size: 1.25rem;
+    font-family: 'Outfit', 'Space Grotesk', sans-serif;
+    font-size: 1.4rem;
     flex: 1;
-    font-weight: 600;
+    font-weight: 700;
+    letter-spacing: -0.02em;
 }
 
 .panel-badge {
@@ -811,9 +858,11 @@ body::before {
 }
 
 .subject-title h4 {
+    font-family: 'Outfit', 'Space Grotesk', sans-serif;
     color: var(--primary);
-    font-size: 1rem;
-    font-weight: 600;
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
 }
 
 .credits-badge {
@@ -1045,9 +1094,12 @@ body::before {
 }
 
 .placeholder-content h3 {
+    font-family: 'Outfit', 'Space Grotesk', sans-serif;
     color: var(--text-primary);
     margin-bottom: 1rem;
     font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
 }
 
 .placeholder-content > p {
@@ -1518,8 +1570,11 @@ body::before {
 .insight-card.todolist .insight-header i { color: var(--primary); }
 
 .insight-header h4 {
-    font-size: 0.95rem;
+    font-family: 'Outfit', 'Space Grotesk', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
     color: var(--text-primary);
+    letter-spacing: -0.01em;
 }
 
 .action-item {
@@ -1872,12 +1927,15 @@ body::before {
 }
 
 .footer-section h4 {
+    font-family: 'Outfit', 'Space Grotesk', sans-serif;
     display: flex;
     align-items: center;
     gap: 0.5rem;
     margin-bottom: 1rem;
     color: var(--text-primary);
-    font-size: 1rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
 }
 
 .footer-section h4 i {
@@ -2038,7 +2096,9 @@ body::before {
 }
 
 .ai-title h3 {
-    font-size: 1rem;
+    font-family: 'Outfit', 'Space Grotesk', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
 }
 
 .ai-close {
