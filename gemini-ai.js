@@ -2,7 +2,7 @@
 class GeminiAIAssistant {
     constructor() {
         // Force set the API key (always override)
-        const newApiKey = 'AIzaSyBVhdtBX1c6jKZrZY659kS5vS9wekU0NCY';
+        const newApiKey = 'AIzaSyAbl9SHPIQhXb37iioECkQ0uLSsSRlsQOk';
         localStorage.setItem('gemini_api_key', newApiKey);
         this.apiKey = newApiKey;
         this.chatHistory = [];
