@@ -3,7 +3,7 @@ class GeminiAIAssistant {
     constructor() {
         // Set default API key synchronously if not already set
         if (!localStorage.getItem('gemini_api_key')) {
-            localStorage.setItem('gemini_api_key', 'AIzaSyAyLTmDS200Lv7hWzbdabeNmEhpZ4ESMXE');
+            localStorage.setItem('gemini_api_key', 'AIzaSyBVhdtBX1c6jKZrZY659kS5vS9wekU0NCY');
         }
         this.apiKey = localStorage.getItem('gemini_api_key');
         this.chatHistory = [];
