@@ -1584,6 +1584,9 @@ body::before {
     background: var(--bg-secondary);
     border-radius: var(--border-radius-xs);
     margin-bottom: 0.5rem;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
 }
 
 .action-item:last-child {
@@ -1624,11 +1627,16 @@ body::before {
     color: var(--text-primary);
     font-size: 0.9rem;
     margin-bottom: 0.25rem;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 .action-item div:last-child {
     font-size: 0.85rem;
     color: var(--text-tertiary);
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
 }
 
 /* ========================================
