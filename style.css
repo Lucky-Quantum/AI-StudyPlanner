@@ -1535,6 +1535,9 @@ body::before {
     border-radius: var(--border-radius-sm);
     padding: 1rem;
     border-left: 4px solid;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    max-width: 100%;
 }
 
 .insight-card.priority {
