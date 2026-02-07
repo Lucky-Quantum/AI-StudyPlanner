@@ -2,10 +2,8 @@
 
 <div align="center">
 
-![AI Study Planner](https://img.shields.io/badge/AI-Study%20Planner-4361ee?style=for-the-badge&logo=brain)
-![Hackathon 2026](https://img.shields.io/badge/Hackathon-2026-f72585?style=for-the-badge)
-![Version](https://img.shields.io/badge/Version-2.0.0-06d6a0?style=for-the-badge)
-![License](https://img.shields.io/badge/License-MIT-4cc9f0?style=for-the-badge)
+AI-Studyplanner=(https://celadon-starship-4143f0.netlify.app/)
+RECORDING LINK =(<video controls src="Recording 2026-02-07 171146.mp4" title="recording"></video>)
 
 **Built for UnsaidTalks Engineering Students Hackathon 2026**
 
@@ -122,11 +120,48 @@ AI-StudyPlanner/
 
 <div align="center">
 
-[![Demo Video Placeholder](https://img.shields.io/badge/📹-Watch%20Demo%20Video-ff6b6b?style=for-the-badge)](https://your-demo-video-link.com)
+[![Demo Video Placeholder](https://img.shields.io/badge/📹-Watch%20Demo%20Video-ff6b6b?style=for-the-badge)](ADD_YOUR_VIDEO_LINK_HERE)
 
-*Click above to watch the 5-minute demo explaining the problem, solution, and impact*
+*Click above to watch the 5-minute demo* ⬆️ **REPLACE THIS WITH YOUR VIDEO LINK** ⬆️
 
 </div>
+
+### 🎬 How to Record Your Demo:
+
+1. **Use Free Tools:**
+   - **OBS Studio** - Download from obsproject.com
+   - **Windows Game Bar** - Press `Win+G`
+   - **Loom** - loom.com (browser extension)
+
+2. **What to Show (3-5 minutes):**
+   | Time | Content |
+   |------|---------|
+   | 30 sec | Problem statement - Why students struggle |
+   | 1 min | Solution overview - Your AI Study Planner |
+   | 2 min | LIVE DEMO - Show all features working |
+   | 30 sec | Key impact and closing |
+
+3. **Demo Script:**
+   - "Hi, I'm [Name] from [College]"
+   - "Today I'll show you my AI Study Planner..."
+   - Show generating a schedule
+   - Show AI assistant answering questions
+   - Show dark/light mode toggle
+   - "Thank you!"
+
+4. **Upload & Share:**
+   - Upload to **YouTube** (unlisted) or **Vimeo**
+   - Or use **Google Drive** / **OneDrive** (set sharing to "Anyone with link")
+   - Copy the share link
+   - Replace `ADD_YOUR_VIDEO_LINK_HERE` above with your link
+
+### 📹 Quick Tips:
+- ✅ Record in landscape mode (horizontal)
+- ✅ Use 1080p resolution
+- ✅ Ensure clear audio
+- ✅ Show cursor interactions
+- ✅ Keep under 5 minutes
+- ✅ Export as MP4
 
 
 
@@ -134,7 +169,7 @@ AI-StudyPlanner/
 
 ### Prerequisites
 - Modern web browser (Chrome, Firefox, Edge, Safari)
-- Gemini API Key (get free from [Google AI Studio](https://makersuite.google.com/app/apikey))
+- DeepSeek API Key via [OpenRouter](https://openrouter.ai/keys) (free tier available)
 
 ### Installation
 
@@ -144,10 +179,39 @@ git clone https://github.com/Lucky-Quantum/AI-StudyPlanner.git
 cd AI-StudyPlanner
 ```
 
-2. **Get your Gemini API Key:**
-   - Visit [Google AI Studio](https://makersuite.google.com/app/apikey)
-   - Create a new API key
+2. **Get your DeepSeek API Key:**
+   - Visit [OpenRouter](https://openrouter.ai/keys)
+   - Sign up and create a free API key
    - Copy your key
+
+3. **Run the project:**
+   - Open `index.html` in your browser
+   - Or use a local server:
+```bash
+# Using Python
+python -m http.server 8000
+# Then open: http://localhost:8000
+```
+
+### 🚀 Hosting (Optional - Gives You Edge!)
+
+Host your project for free:
+
+| Platform | Link | Cost |
+|----------|------|------|
+| GitHub Pages | [Enable in repo settings](https://pages.github.com/) | Free |
+| Netlify | [netlify.com](https://netlify.com) | Free |
+| Vercel | [vercel.com](https://vercel.com) | Free |
+
+**Recommended: GitHub Pages (Easiest)**
+1. Go to Repository **Settings** → **Pages**
+2. Under "Source", select **main** branch
+3. Click **Save**
+4. Your site will be live at:
+   ```
+   https://Lucky-Quantum.github.io/AI-StudyPlanner
+   ```
+5. **Add this link** to your submission!
 
 3. **Configure the API:**
    - Open the project in your browser
@@ -269,6 +333,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 **© 2026 AI Study Planner | Built for UnsaidTalks Hackathon**
 
 [![GitHub Stars](https://img.shields.io/github/stars/Lucky-Quantum/AI-StudyPlanner?style=social)](https://github.com/Lucky-Quantum/AI-StudyPlanner)
-[![Follow on Twitter](https://img.shields.io/twitter/follow/shaktiramawat?style=social)](https://twitter.com/shaktiramawat)
+
 
 </div>
