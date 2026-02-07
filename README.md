@@ -17,7 +17,7 @@
 
 ---
 
-## 🎯 Problem Statement
+##  Problem Statement
 
 Engineering students face a uniquely demanding academic environment. They juggle multiple technically intensive subjects at once - each with different prerequisites, assessment styles, and cognitive demands. Traditional study planning methods fail to adapt to the dynamic, interconnected, and high-cognitive-load nature of engineering coursework.
 
@@ -30,40 +30,40 @@ Engineering students face a uniquely demanding academic environment. They juggle
 
 ---
 
-## 💡 Solution
+##  Solution
 
 An AI-powered study planner tailored specifically for engineering students that:
 
-- 📊 **Analyzes** subjects, deadlines, prerequisites, and cognitive load
-- 📅 **Creates** personalized, adaptive study schedules
-- ⚖️ **Balances** deep learning with timely completion
-- 🔄 **Evolves** dynamically as priorities, performance, and difficulty change
+-  **Analyzes** subjects, deadlines, prerequisites, and cognitive load
+-  **Creates** personalized, adaptive study schedules
+-  **Balances** deep learning with timely completion
+-  **Evolves** dynamically as priorities, performance, and difficulty change
 
 ---
 
-## ✨ Features
+##  Features
 
-### 🎨 User Experience
+###  User Experience
 - **Dark/Light Mode** - Toggle between themes for comfortable viewing (press `Ctrl+D` for dark mode)
 - **Responsive Design** - Works on desktop, tablet, and mobile
 - **Progress Tracker** - Visual 4-step progress indicator
 - **Sample Data** - Pre-loaded sample for quick demonstration
 
-### 🧠 AI-Powered Features
+###  AI-Powered Features
 - **Smart Scheduling Algorithm** - Generates personalized weekly schedules
 - **Cognitive Load Balancing** - Distributes high-focus and low-focus sessions optimally
 - **Prerequisite Mapping** - Identifies foundational gaps blocking progress
 - **Adaptive Rebalancing** - Automatically adjusts schedule based on confidence levels
 - **Gemini AI Assistant** - Chat with AI for study help and concept explanations
 
-### 📊 Schedule Visualization
+###  Schedule Visualization
 - **Weekly View** - Color-coded daily schedule
 - **Daily View** - Detailed day-by-day breakdown
 - **Timeline View** - Long-term progress tracking
 - **Subject Breakdown** - Percentage-based focus allocation
 - **Confidence Tracking** - Monitor improvement over time
 
-### 📋 Input Details
+###  Input Details
 - Student profile (Name, College, Branch, Graduation Year)
 - Subjects with credits and confidence levels
 - Strong and weak areas per subject
@@ -74,7 +74,7 @@ An AI-powered study planner tailored specifically for engineering students that:
 
 ---
 
-## 🚀 How It Works
+##  How It Works
 
 ### 1. Input Your Details
 Fill in your profile, subjects, and study preferences. Sample data is pre-loaded for quick testing.
@@ -90,7 +90,7 @@ Click on any topic in your schedule to get AI-powered explanations and study tip
 
 ---
 
-## 🛠️ Technology Stack
+##  Technology Stack
 
 - **Frontend:** HTML5, CSS3, JavaScript (ES6+)
 - **AI Integration:** Google Gemini Pro API
@@ -100,33 +100,23 @@ Click on any topic in your schedule to get AI-powered explanations and study tip
 
 ---
 
-## 📁 Project Structure
+##  Project Structure
 
-```
+
 AI-StudyPlanner/
-├── index.html              # Main HTML structure
-├── style.css              # Complete styling with dark/light mode
-├── script.js              # Main application logic
-├── schedule-algorithm.js   # AI scheduling algorithm
-├── gemini-ai.js           # Gemini AI integration
-├── README.md             # This file
-└── assets/
-    └── .env.example      # Environment variables template
-```
+ index.html              # Main HTML structure
+ style.css              # Complete styling with dark/light mode
+ script.js              # Main application logic
+ schedule-algorithm.js   # AI scheduling algorithm
+ gemini-ai.js           # Gemini AI integration
+ README.md             # This file
+ assets/
+     .env.example      # Environment variables template
 
----
 
-## 🎯 Evaluation Criteria
 
-| Criteria | Weight | Status |
-|----------|--------|--------|
-| Impact | 20% | ✅ Addressed |
-| Innovation | 20% | ✅ Creative |
-| Technical Execution | 20% | ✅ Robust Code |
-| User Experience | 25% | ✅ Intuitive |
-| Presentation | 15% | ✅ Demo Ready |
 
----
+
 
 ## 📽️ Demo Video
 
@@ -138,16 +128,9 @@ AI-StudyPlanner/
 
 </div>
 
-### Demo Contents:
-1. 🎬 Problem Introduction (30 seconds)
-2. 🎬 Solution Overview (1 minute)
-3. 🎬 Live Demo (2 minutes)
-4. 🎬 Technical Deep Dive (1 minute)
-5. 🎬 Impact & Conclusion (30 seconds)
 
----
 
-## ⚡ Quick Start
+##  Quick Start
 
 ### Prerequisites
 - Modern web browser (Chrome, Firefox, Edge, Safari)
@@ -157,7 +140,7 @@ AI-StudyPlanner/
 
 1. **Clone or download the project:**
 ```bash
-git clone https://github.com/shakti-ramawat/AI-StudyPlanner.git
+git clone https://github.com/Lucky-Quantum/AI-StudyPlanner.git
 cd AI-StudyPlanner
 ```
 
@@ -185,7 +168,7 @@ npx serve .
 
 ---
 
-## 📊 Algorithm Highlights
+##  Algorithm Highlights
 
 ### Weight Calculation Formula
 ```
@@ -205,7 +188,7 @@ Subject Weight = (Credits × 8) + ((5 - Confidence) × 7) × CognitiveMultiplier
 
 ---
 
-## 🎨 Theme Toggle
+##  Theme Toggle
 
 The application includes a beautiful dark/light mode toggle:
 
@@ -221,7 +204,7 @@ The application includes a beautiful dark/light mode toggle:
 
 ---
 
-## 📱 Screenshots
+##  Screenshots
 
 ### Main Dashboard
 ![Main Dashboard](https://via.placeholder.com/800x400?text=AI+Study+Planner+Dashboard)
@@ -234,23 +217,23 @@ The application includes a beautiful dark/light mode toggle:
 
 ---
 
-## 🏆 Expected Outcomes
+##  Expected Outcomes
 
 ### For Students
-- 📈 **70% reduction** in last-minute cramming
-- 📊 **45% improvement** in long-term retention
-- ⏰ **20% more efficient** study time
-- 🎯 Personalized confidence improvement to 4-5/5
+-  **70% reduction** in last-minute cramming
+-  **45% improvement** in long-term retention
+-  **20% more efficient** study time
+-  Personalized confidence improvement to 4-5/5
 
 ### For Institutions
-- 📚 Better prepared students for exams
-- 📉 Reduced stress and burnout
-- 📊 Improved academic performance
-- 🎓 Enhanced learning outcomes
+-  Better prepared students for exams
+-  Reduced stress and burnout
+-  Improved academic performance
+-  Enhanced learning outcomes
 
 ---
 
-## 🤝 Contributing
+##  Contributing
 
 This is a hackathon submission. For improvements or issues:
 
@@ -262,13 +245,13 @@ This is a hackathon submission. For improvements or issues:
 
 ---
 
-## 📝 License
+##  License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
 
-## 🙏 Acknowledgments
+##  Acknowledgments
 
 - **UnsaidTalks Education** - For organizing this amazing hackathon
 - **Google** - For providing the Gemini AI API
@@ -277,13 +260,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-## 📧 Contact
 
-- **Email:** info@unsaidtalks.com
-- **Phone:** +91-7303573374
-- **Website:** [www.unsaidtalks.com](https://www.unsaidtalks.com)
-
----
 
 <div align="center">
 
@@ -291,7 +268,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **© 2026 AI Study Planner | Built for UnsaidTalks Hackathon**
 
-[![GitHub Stars](https://img.shields.io/github/stars/shakti-ramawat/AI-StudyPlanner?style=social)](https://github.com/shakti-ramawat/AI-StudyPlanner)
+[![GitHub Stars](https://img.shields.io/github/stars/Lucky-Quantum/AI-StudyPlanner?style=social)](https://github.com/Lucky-Quantum/AI-StudyPlanner)
 [![Follow on Twitter](https://img.shields.io/twitter/follow/shaktiramawat?style=social)](https://twitter.com/shaktiramawat)
 
 </div>
