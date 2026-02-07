@@ -1,8 +1,12 @@
 // DeepSeek AI Integration for Study Assistant
 class GeminiAIAssistant {
     constructor() {
-        // DeepSeek API Key via OpenRouter
-        this.apiKey = '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';
+        // OpenRouter API Key - load from localStorage or environment variable
+        // Do NOT hardcode API keys in production code
+        this.apiKey = localStorage.getItem('openrouter_api_key') || '';
+        if (!this.apiKey) {
+            console.warn('API key not configured. Please set it in settings.');
+        }
         this.apiUrl = 'https://openrouter.ai/api/v1/chat/completions';
         this.model = 'deepseek/deepseek-r1-0528:free';
         this.chatHistory = [];
