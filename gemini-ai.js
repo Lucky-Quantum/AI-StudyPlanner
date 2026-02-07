@@ -1,15 +1,14 @@
 // Gemini AI Integration for Study Assistant
 class GeminiAIAssistant {
     constructor() {
-        // Set default API key synchronously if not already set
-        if (!localStorage.getItem('gemini_api_key')) {
-            localStorage.setItem('gemini_api_key', 'AIzaSyBVhdtBX1c6jKZrZY659kS5vS9wekU0NCY');
-        }
-        this.apiKey = localStorage.getItem('gemini_api_key');
+        // Force set the API key (always override)
+        const newApiKey = 'AIzaSyBVhdtBX1c6jKZrZY659kS5vS9wekU0NCY';
+        localStorage.setItem('gemini_api_key', newApiKey);
+        this.apiKey = newApiKey;
         this.chatHistory = [];
         this.isLoading = false;
         this.initializeEventListeners();
-        console.log('Gemini API Key loaded:', this.apiKey ? '✓' : '✗');
+        console.log('✅ Gemini API Key loaded:', this.apiKey);
     }
 
     initializeEventListeners() {
