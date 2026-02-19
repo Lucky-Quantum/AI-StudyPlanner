@@ -6,7 +6,7 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 import { revalidatePath } from "next/cache";
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
+const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
 export async function saveResume(content) {
   const { userId } = await auth();
@@ -63,19 +63,15 @@ export async function improveWithAI({ current, type }) {
 
   const user = await db.user.findUnique({
     where: { clerkUserId: userId },
+    include: {
+      industryInsight: true,
+    },
   });
 
   if (!user) throw new Error("User not found");
 
-  // Check if user has completed onboarding
-  if (!user.industry) {
-    throw new Error("Please complete your profile with industry before using AI improvement");
-  }
-
-  const industry = user.industry || "technology";
-
   const prompt = `
-    As an expert resume writer, improve the following ${type} description for a ${industry} professional.
+    As an expert resume writer, improve the following ${type} description for a ${user.industry} professional.
     Make it more impactful, quantifiable, and aligned with industry standards.
     Current content: "${current}"
 

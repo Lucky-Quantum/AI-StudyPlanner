@@ -5,7 +5,7 @@ import { auth } from "@clerk/nextjs/server";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
+const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
 export async function generateCoverLetter(data) {
   const { userId } = await auth();
@@ -17,15 +17,6 @@ export async function generateCoverLetter(data) {
 
   if (!user) throw new Error("User not found");
 
-  // Check if user has completed onboarding
-  if (!user.industry || !user.skills || user.skills.length === 0) {
-    throw new Error("Please complete your profile with industry and skills before generating a cover letter");
-  }
-
-  const skillsList = Array.isArray(user.skills) ? user.skills.join(", ") : user.skills || "various skills";
-  const experience = user.experience || "several years of";
-  const bio = user.bio || "professional experience";
-
   const prompt = `
     Write a professional cover letter for a ${data.jobTitle} position at ${
     data.companyName
@@ -33,9 +24,9 @@ export async function generateCoverLetter(data) {
     
     About the candidate:
     - Industry: ${user.industry}
-    - Years of Experience: ${experience}
-    - Skills: ${skillsList}
-    - Professional Background: ${bio}
+    - Years of Experience: ${user.experience}
+    - Skills: ${user.skills?.join(", ")}
+    - Professional Background: ${user.bio}
     
     Job Description:
     ${data.jobDescription}

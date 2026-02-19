@@ -15,13 +15,6 @@ export async function updateUser(data) {
 
   if (!user) throw new Error("User not found");
 
-  // Transform skills from comma-separated string to array
-  const skillsArray = data.skills
-    ? Array.isArray(data.skills)
-      ? data.skills
-      : data.skills.split(",").map((skill) => skill.trim()).filter(Boolean)
-    : [];
-
   try {
     // Start a transaction to handle both operations
     const result = await db.$transaction(
@@ -35,20 +28,15 @@ export async function updateUser(data) {
 
         // If industry doesn't exist, create it with default values
         if (!industryInsight) {
-          try {
-            const insights = await generateAIInsights(data.industry);
+          const insights = await generateAIInsights(data.industry);
 
-            industryInsight = await tx.industryInsight.create({
-              data: {
-                industry: data.industry,
-                ...insights,
-                nextUpdate: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
-              },
-            });
-          } catch (insightError) {
-            console.error("Error generating insights:", insightError.message);
-            // Continue without insights if generation fails
-          }
+          industryInsight = await db.industryInsight.create({
+            data: {
+              industry: data.industry,
+              ...insights,
+              nextUpdate: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
+            },
+          });
         }
 
         // Now update the user
@@ -60,7 +48,7 @@ export async function updateUser(data) {
             industry: data.industry,
             experience: data.experience,
             bio: data.bio,
-            skills: skillsArray,
+            skills: data.skills,
           },
         });
 
@@ -72,7 +60,7 @@ export async function updateUser(data) {
     );
 
     revalidatePath("/");
-    return result.updatedUser;
+    return result.user;
   } catch (error) {
     console.error("Error updating user and industry:", error.message);
     throw new Error("Failed to update profile");
@@ -82,6 +70,12 @@ export async function updateUser(data) {
 export async function getUserOnboardingStatus() {
   const { userId } = await auth();
   if (!userId) throw new Error("Unauthorized");
+
+  const user = await db.user.findUnique({
+    where: { clerkUserId: userId },
+  });
+
+  if (!user) throw new Error("User not found");
 
   try {
     const user = await db.user.findUnique({
