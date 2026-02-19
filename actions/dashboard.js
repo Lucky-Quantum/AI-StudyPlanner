@@ -5,7 +5,7 @@ import { auth } from "@clerk/nextjs/server";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
 
 export const generateAIInsights = async (industry) => {
   const prompt = `
@@ -48,6 +48,11 @@ export async function getIndustryInsights() {
   });
 
   if (!user) throw new Error("User not found");
+
+  // Check if user has completed onboarding
+  if (!user.industry) {
+    throw new Error("Please complete your profile to view industry insights");
+  }
 
   // If no insights exist, generate them
   if (!user.industryInsight) {

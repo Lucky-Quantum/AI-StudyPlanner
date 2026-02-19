@@ -5,7 +5,7 @@ import { auth } from "@clerk/nextjs/server";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
 
 export async function generateQuiz() {
   const { userId } = await auth();
@@ -21,12 +21,19 @@ export async function generateQuiz() {
 
   if (!user) throw new Error("User not found");
 
+  // Check if user has completed onboarding
+  if (!user.industry) {
+    throw new Error("Please complete your profile with industry before generating quiz questions");
+  }
+
+  const skillsText = user.skills && user.skills.length > 0 
+    ? user.skills.join(", ") 
+    : "various technical skills";
+
   const prompt = `
     Generate 10 technical interview questions for a ${
       user.industry
-    } professional${
-    user.skills?.length ? ` with expertise in ${user.skills.join(", ")}` : ""
-  }.
+    } professional with expertise in ${skillsText}.
     
     Each question should be multiple choice with 4 options.
     
@@ -63,9 +70,16 @@ export async function saveQuizResult(questions, answers, score) {
 
   const user = await db.user.findUnique({
     where: { clerkUserId: userId },
+    select: {
+      id: true,
+      industry: true,
+    },
   });
 
   if (!user) throw new Error("User not found");
+
+  // Get user's industry for generating improvement tips
+  const userIndustry = user.industry || "technology";
 
   const questionResults = questions.map((q, index) => ({
     question: q.question,
@@ -89,7 +103,7 @@ export async function saveQuizResult(questions, answers, score) {
       .join("\n\n");
 
     const improvementPrompt = `
-      The user got the following ${user.industry} technical interview questions wrong:
+      The user got the following ${userIndustry} technical interview questions wrong:
 
       ${wrongQuestionsText}
 
